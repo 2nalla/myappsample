@@ -1,0 +1,67 @@
+﻿@model NgStudentGradesSpa1.Models.SGradesModel
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>StudentHome</title>
+    <script src="~/Scripts/angular.js"></script>
+    <script src="~/Scripts/angular-route.js"></script>
+    <script src="~/Scripts/SGradesJS.js"></script>
+    <base href="/">
+</head>
+<body ng-app="MyApp">
+
+        <div style="background:content-box,center;width:80%;height:auto;color:blueviolet;
+            background-color:floralwhite;padding:20px; margin:auto;
+            font-family:'Times New Roman', Times, serif">
+            <header style="text-align:center;color:violet"><h1><u>Higgins Middle School</u></h1></header>
+            <br/><br/>
+            <h4 style="color:red">Welcome to Higgins Middle School!!</h4> 
+            <h4>Today's Date and Time is: @ViewBag.MyDateTime</h4>
+            <div>
+                <ul>
+                   <li><h3><a href="NewStudent">Enter New Student's Scores/Update</a></h3></li> 
+                   <li><h3><a href="SearchStudent">Search Student Scores</a></h3></li>   
+                </ul>
+              
+            </div>
+            <div ng-view></div>
+            </div>
+    <script>
+    var myApp = angular.module("MyApp", ['ngRoute']);
+    myApp.controller('sGradesJs', sGradesJs);
+    
+        myApp.config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {  
+            $locationProvider.html5Mode({
+                enabled: true,
+                requireBase: false
+            });
+        
+            $routeProvider
+          
+              .when('/NewStudent', {
+                  templateUrl: 'Student/StudentsGrades',
+                  controller: 'sGradesJs'
+              
+              })
+              .when('/SearchStudent', {
+                  templateUrl: 'Student/SearchStudent',
+                  controller: 'sGradesJs'
+              
+              })
+              .otherwise({
+                  redirectTo: '/'
+              });
+            // use the HTML5 History API
+            $locationProvider.html5Mode(true).hashPrefix('!')  // it will remove the #
+        }]);
+    </script>
+               
+    </body>
+</html>

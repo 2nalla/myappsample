@@ -1,0 +1,22 @@
+﻿<table id="tbl">
+    <tr>
+        <td>StudentCode</td>
+        <td>StudentName</td>
+        <td>Math</td>
+        <td>Science</td>
+        <td>English</td>
+        <td>Total</td>
+        <td>Average</td>
+        <td>Grade</td>
+    </tr>
+    <tr ng-repeat="gr in StudentsGrades">
+        <td>{{gr.StudentCode}}</td>
+        <td>{{gr.StudentName}}</td>
+        <td>{{gr.Math}}</td>
+        <td>{{gr.Science}}</td>
+        <td>{{gr.English}}</td>
+        <td>{{gr.Total}}</td>
+        <td>{{gr.Average}}</td>
+        <td>{{gr.Grade}}</td>
+        </tr>
+</table>

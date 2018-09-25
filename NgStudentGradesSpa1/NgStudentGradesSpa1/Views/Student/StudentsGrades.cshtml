@@ -1,0 +1,53 @@
+﻿
+
+    <div class="mainDiv">
+        <header><h1 style="text-align:center; color:red"><b><u>StudentScores</u></b></h1></header>
+        <div ng-controller="sGradesJs">
+            <form name="frm">
+                <b>StudentCode:</b> <input id="Text1" ng-model="sGrade.StudentCode" name="sc" type="text" ng-required="true" />
+                <span ng-show="frm.sc.$pristine&&frm.sc.$invalid">Required!!</span> <br /><br />
+                <b>StudentName:</b> <input id="Text1" ng-model="sGrade.StudentName" name="sn" type="text" ng-maxlength="15" />
+                <span ng-show="frm.sn.$dirty&&frm.sn.$error.maxlength">MaxLength:15</span> <br /><br />
+                <h3><u>EnterScores</u></h3>
+                <b>Math:</b> <input id="Text1" ng-model="sGrade.Math" name="m" type="number" min="0" max="100" />
+                <span ng-show="frm.m.$touched&&frm.m.$invalid"> Invalid!!<br/>Score(0-100)</span> <br /><br />
+                <b>Science:</b> <input id="Text2" ng-model="sGrade.Science" name="s" type="number" min="0" max="100" />
+                <span ng-show="frm.s.$touched&&frm.s.$invalid"> Invalid!!<br />Score(0-100)</span> <br /><br />
+                <b>English:</b> <input id="Text3" ng-model="sGrade.English" name="e" type="number" min="0" max="100" />
+                <span ng-show="frm.e.$touched&&frm.e.$invalid"> Invalid!!<br />Score(0-100)</span> <br /><br />
+            </form>
+            <input id="Button1" type="button" name="btnsubmit"value="Submit" ng-click="Submit()" ng-disabled="frm.$invalid"/>
+      
+            <input id="Button1" type="button" value="Update" ng-click="Update()" />
+            <br/><br/>
+            <h3><u>EnteredScores</u></h3>
+            <table id="tbl">
+                <tr>
+                    <td>StudentCode</td>
+                    <td>StudentName</td>
+                    <td>Math</td>
+                    <td>Science</td>
+                    <td>English</td>
+                    <td>Total</td>
+                    <td>Average</td>
+                    <td>Grade</td>
+                </tr>
+                <tr ng-repeat="gr in StudentsGrades">
+                    <td>{{gr.StudentCode}}</td>
+                    <td>{{gr.StudentName}}</td>
+                    <td>{{gr.Math}}</td>
+                    <td>{{gr.Science}}</td>
+                    <td>{{gr.English}}</td>
+                    <td>{{gr.Total}}</td>
+                    <td>{{gr.Average}}</td>
+                    <td>{{gr.Grade}}</td>
+                    <td><a href="#" ng-click="LoadByCode(gr.StudentCode)">Select</a></td>
+                </tr>
+            </table>
+                <div>
+                    <span>{{addmssg}}</span>
+                    <span>{{updatemssg}}</span>
+                    <span>{{deletemssg}}</span>
+            </div>
+        </div>
+    </div>

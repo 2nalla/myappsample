@@ -1,0 +1,19 @@
+﻿
+
+@{
+    Layout = null;
+}
+
+
+
+    <div style="background:content-box,center;width:80%;height:auto;color:blueviolet;
+            background-color:floralwhite;padding:20px; margin:auto;
+            font-family:'Times New Roman', Times, serif">
+        <header style="text-align:center"><h1><u>Search Student</u></h1></header>
+        <div ng-controller="sGradesJs">
+            <b>EnterStudentsName:</b><input id="Text1" ng-model="sGrade.StudentName" type="text" /> <br/> <br/>
+            <input id="Button1" ng-click="LoadByName()" type="button" value="Search" />
+            @Html.Partial("CommonTableView")
+        </div>
+    </div>
+    
